@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public bool grounded = true;
     public Mover mover;
     public Rigidbody2D rb;
 
@@ -14,32 +13,12 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Detect collision with floor
-    void OnCollisionEnter2D(Collision2D hit)
-    {
-        Debug.Log("Hit detected");
-        if (hit.gameObject.tag == "Floor")
-        {
-            grounded = true;
-        }
-    }
-
-    // Detect collision exit with floor
-    void OnCollisionExit2D(Collision2D hit)
-    {
-        Debug.Log("Leave detected");
-
-        if (hit.gameObject.tag == "Floor")
-        {
-            grounded = false;
-        }
-    }
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
-        grounded = true;
 
     }
 
@@ -53,10 +32,10 @@ public class PlayerController : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump") && mover.grounded)
         {
             mover.Jump();
-            grounded = false;
+            mover.grounded = false;
         }
         else if (Input.GetButtonUp("Jump"))
         {
