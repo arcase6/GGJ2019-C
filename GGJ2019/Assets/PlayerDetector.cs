@@ -32,12 +32,12 @@ public class PlayerDetector : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (!playerIsDetected && collision.gameObject.tag == "Player")
+        if (!playerIsDetected && collision.gameObject.tag == "PlayerHeart")
         {
             playerIsDetected = true;
             try
             {
-                enemy.playerTransform = collision.gameObject.transform;
+                enemy.playerTransform = collision.GetComponentInParent<Transform>();
             }catch(Exception e)
             {
 
@@ -51,7 +51,7 @@ public class PlayerDetector : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (playerIsDetected && collision.gameObject.tag == "Player")
+        if (playerIsDetected && collision.gameObject.tag == "PlayerHeart")
         {
             playerIsDetected = false;
             enemyController.SetTrigger("PlayerLost");

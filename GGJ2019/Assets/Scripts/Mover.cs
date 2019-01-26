@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Mover : MonoBehaviour
@@ -28,32 +29,16 @@ public class Mover : MonoBehaviour
     private void FixedUpdate()
     {
     }
-
-    // Update is called once per frame
+    // Update is called once per 
     void Update()
     {
-        
-    }
-
-
-    // Detect collision with floor
-    void OnCollisionEnter2D(Collision2D hit)
-    {
-        Debug.Log("Hit detected");
-        if (hit.gameObject.tag == "Floor")
+        for (int i = -1; i <= 1; i += 2)
         {
-            grounded = true;
-        }
-    }
-
-    // Detect collision exit with floor
-    void OnCollisionExit2D(Collision2D hit)
-    {
-        Debug.Log("Leave detected");
-
-        if (hit.gameObject.tag == "Floor")
-        {
-            grounded = false;
+            grounded = Physics2D.RaycastAll(new Vector2(transform.position.x + i / 2, transform.position.y), new Vector2(0, -1.0f), 1.0f)
+                .Where(h => h.collider != null)
+                .Any(h => h.collider.gameObject.tag == "Floor");
+            if (grounded)
+                break;
         }
     }
 
@@ -61,8 +46,8 @@ public class Mover : MonoBehaviour
     {
         Vector2 newSpeed = rb.velocity;
         newSpeed.y = jumpTakeOffSpeed / 2;
-        if(rb.velocity.y > newSpeed.y)
-        rb.velocity = newSpeed;
+        if (rb.velocity.y > newSpeed.y)
+            rb.velocity = newSpeed;
     }
 
     public void Jump()
