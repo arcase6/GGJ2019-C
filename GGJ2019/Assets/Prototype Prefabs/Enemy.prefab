@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 261611964960665708}
   - component: {fileID: 7232447403035636776}
-  - component: {fileID: 179756067766596739}
   - component: {fileID: 7474322428788132750}
-  - component: {fileID: 5301770508117795410}
   - component: {fileID: 5301770508117795411}
+  - component: {fileID: 5301770508117795410}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -52,34 +51,11 @@ MonoBehaviour:
   rb: {fileID: 7474322428788132750}
   MaxSpeed: 5
   Acceleration: 50
+  Decceleration: 100
   jumpTakeOffSpeed: 7
   grounded: 1
---- !u!61 &179756067766596739
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5301770508117795409}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.021061659}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 2.5263772}
-  m_EdgeRadius: 0
+  MovementAnimator: {fileID: 0}
+  feet: {fileID: 261611964960665708}
 --- !u!50 &7474322428788132750
 Rigidbody2D:
   serializedVersion: 4
@@ -101,25 +77,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!95 &5301770508117795410
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5301770508117795409}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9015119f7119a4649a705544fc76d5c8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5301770508117795411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,10 +93,26 @@ MonoBehaviour:
   mover: {fileID: 7232447403035636776}
   targetReached: 0
   rb: {fileID: 7474322428788132750}
-  PatrolPoint1: {x: -0.45721054, y: 1.05}
-  PatrolPoint2: {x: 8.251352, y: 1.05}
+  PatrolPoint1: {x: 14.864646, y: 1.1230487}
+  PatrolPoint2: {x: -6.504464, y: 1.0743496}
   DefaultPatrolOffset: 20
   playerTransform: {fileID: 0}
+--- !u!70 &5301770508117795410
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5301770508117795409}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.5}
+  m_Size: {x: 1, y: 2}
+  m_Direction: 0
 --- !u!1 &5388310726507858517
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +153,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5388310726507858517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -206,13 +179,13 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5388310726507858517}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 3.6046224, y: -0.03306961}
+  m_Offset: {x: 5.1328917, y: 1.4187055}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -223,7 +196,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 7.217147, y: 2.322792}
+  m_Size: {x: 20.523191, y: 5.226342}
   m_EdgeRadius: 0
 --- !u!114 &5388310726507858519
 MonoBehaviour:
@@ -237,11 +210,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af7cb0ab388cf641b9e14354588e7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyController: {fileID: 5301770508117795410}
+  enemyController: {fileID: 615037592}
   enemy: {fileID: 5301770508117795411}
   colliders:
   - {fileID: 8690102260532962194}
   - {fileID: 5388310726507858518}
+  renderobject: {fileID: 6097094743767978024}
 --- !u!1 &6097094743767978024
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +226,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6485946859833125963}
   - component: {fileID: 2959843830804225810}
+  - component: {fileID: 615037592}
   m_Layer: 0
   m_Name: Rendering
   m_TagString: Untagged
@@ -268,7 +243,7 @@ Transform:
   m_GameObject: {fileID: 6097094743767978024}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2.49, z: 1}
+  m_LocalScale: {x: 5.0264, y: 5.0264, z: 5.0264}
   m_Children: []
   m_Father: {fileID: 261611964960665708}
   m_RootOrder: 0
@@ -310,8 +285,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6b0dab7b900e6284c898ad0b7afb8321, type: 3}
-  m_Color: {r: 0.6226415, g: 0.255518, b: 0.255518, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a04c0a57f400a459fb05d1516ae0cb97, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -321,3 +296,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &615037592
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097094743767978024}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9015119f7119a4649a705544fc76d5c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
