@@ -19,4 +19,6 @@ MonoBehaviour:
   TitleScene: TitleScreen
   levels:
   - Level1
-  previousSceneIndex: 1
+  - Level2
+  - Level3
+  previousSceneIndex: 0

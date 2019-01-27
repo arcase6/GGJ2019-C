@@ -43,7 +43,7 @@ public class MapEditor
                         sp.sprite = sprite[a];
                         tile.transform.parent = parents.transform;
                         tile.transform.localPosition = new Vector2(i, -y);
-                    if (a == 22) tile.tag = "Floor";
+                    if (a == 22 || a==15 ||a==16||a==21 ||a==20) tile.tag = "Floor";
                     tile.isStatic = true;
 
                     
