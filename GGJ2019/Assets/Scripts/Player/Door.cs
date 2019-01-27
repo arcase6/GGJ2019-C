@@ -10,7 +10,7 @@ public class Door : Interactable
         {
             callingPlayer.SetHiding(true);
             callingPlayer.SetVisibilty(false); //hiding so not visible
-            Vector3 newPosition = new Vector3(transform.position.x, transform.position.y, callingPlayer.transform.position.z);
+            Vector3 newPosition = new Vector3(transform.position.x, callingPlayer.transform.position.y, callingPlayer.transform.position.z);
             callingPlayer.transform.position = newPosition;
         }
         else if(!callingPlayer.isBusyWithAnimation)

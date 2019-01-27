@@ -14,7 +14,6 @@ public class EnemyController : MonoBehaviour
     public float DefaultPatrolOffset = 20;
     [HideInInspector]
     public Transform playerTransform;
-    
 
     public void Reset()
     {
@@ -44,8 +43,5 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-    }
+    
 }

@@ -13,7 +13,6 @@ public class TimerController : MonoBehaviour
     void Start()
     {
         timerText = GetComponent<Text>();
-        timeRemaining.Value = timeRemaining.StartingValue;
         UpdateTimerText();
         isTimerOn = true;
         InvokeRepeating("DecrementTimerIfOn", 1.0f, 1.0f);

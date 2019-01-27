@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isHiding;
     public BoxCollider2D PlayerHeart;
     public CapsuleCollider2D MainCollider;
+    public SpriteRenderer renderer;
     private Interactable previousInteractable;
     private float normalGravity;
 
@@ -31,12 +32,14 @@ public class PlayerController : MonoBehaviour
         this.isHiding = isHiding;
         if (isHiding)
         {
+            renderer.enabled = false;
             rb.velocity = new Vector2(0, 0);
             rb.gravityScale = 0;
             MainCollider.enabled = false;
         }
         else
         {
+            renderer.enabled = true;
             rb.gravityScale = normalGravity;
             MainCollider.enabled = true;
         }
@@ -48,6 +51,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         PlayerHeart = GetComponentInChildren<BoxCollider2D>();
         MainCollider = GetComponent<CapsuleCollider2D>();
+        renderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,36 +7,49 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwapper : MonoBehaviour
 {
-    public string ClearScene;
-    public string FailScene;
-    public List<string> levels;
+    public GameScenes gameScenes;
 
+    public IntVariable PerfectThreshold;
+    public IntVariable NormalThreshold;
+    public IntVariable CurrentTime;
 
     public void LoadClearScreen()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(ClearScene);
+        if (CurrentTime.Value > PerfectThreshold.Value)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(gameScenes.PerfectScene);
+        else if (CurrentTime.Value > NormalThreshold.Value)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(gameScenes.ClearScene);
+        else
+            UnityEngine.SceneManagement.SceneManager.LoadScene(gameScenes.ClearScene);
     }
 
     public void LoadFailScreen()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(FailScene);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(gameScenes.FailScene);
 
     }
 
-    public void LoadMainGame()
+    public void LoadFirstLevel()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(levels.First());
-
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        UnityEngine.SceneManagement.SceneManager.LoadScene(gameScenes.levels.First());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LoadNextLevel()
     {
-        
+        gameScenes.previousSceneIndex++;
+        if (gameScenes.levels.Count < gameScenes.previousSceneIndex)
+            UnityEngine.SceneManagement.SceneManager.LoadScene(gameScenes.levels[gameScenes.previousSceneIndex]);
+        else
+            LoadTitleScreen();
+    }
+
+    public void LoadPreviousLevel()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(gameScenes.levels[gameScenes.previousSceneIndex]);
+    }
+
+    public void LoadTitleScreen()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene(gameScenes.TitleScene);
     }
 }
