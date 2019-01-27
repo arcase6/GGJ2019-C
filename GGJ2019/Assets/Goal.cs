@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal : MonoBehaviour
+public class Goal : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameEventNew GameClear;
+    public GameEventNew OnGameClear;
 
-    // Update is called once per frame
-    void Update()
+    public override void InteractWith(PlayerController callingPlayer)
     {
-        
+        GetComponent<GoalKai>().InteractWith(callingPlayer);
     }
 }
