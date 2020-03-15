@@ -6,6 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/TitleScreen.unity
+    guid: cc867ff6ef916e44ca5272920f314fb0
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Level1.unity
+    guid: 100bccf8e55cfbc4aae0f392744847ba
+  - enabled: 1
+    path: Assets/Scenes/ClearScreen.unity
+    guid: aeff9f8081aee234e8d5ff5c2db4183a
+  - enabled: 0
+    path: Assets/__DELETED_GUID_Trash/ae0ea92e452f02e469e021b3bdc2070c
+    guid: ae0ea92e452f02e469e021b3bdc2070c
+  - enabled: 1
+    path: Assets/Scenes/PerfectClear.unity
+    guid: 033c4f6b5125d8f4db081336105ab709
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 582c79ecee621eb4a8a38c982e29373a
+  - enabled: 1
+    path: Assets/Scenes/BadEnding.unity
+    guid: 6ba091e74fdd6a6488af0d331fe3e30a
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 8866bcd9c90003e40ac4c7fee7b8d793
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: 2c9d926ffdade6047b180d0fbc8fb5e8
   m_configObjects: {}
